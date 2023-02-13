@@ -1,8 +1,9 @@
+#pragma once
+
 #include <cassert>
 #include <cstddef>
 #include <string>
 #include <utility>
-#include <vector>
 
 template <typename Type>
 class SingleLinkedList {
@@ -130,23 +131,19 @@ public:
 
     SingleLinkedList(std::initializer_list<Type> values) {
         SingleLinkedList tmp;
-        auto it = values.end() - 1;
-        while (it != values.begin()) {
-            tmp.PushFront(*it);
-            --it;
+        auto it = tmp.before_begin();
+        for (const auto& element : values) {
+            tmp.InsertAfter(it, element);
+            ++it;
         }
-        tmp.PushFront(*it);
         swap(tmp);
     }
 
     SingleLinkedList(const SingleLinkedList& other) {
         SingleLinkedList tmp;
-        std::vector<Type> temp;
-        for (const auto element : other) {
-            temp.push_back(element);
-        }
-        for (auto it = temp.rbegin(); it != temp.rend(); ++it) {
-            tmp.PushFront(*it);
+        auto it = tmp.before_begin();
+        for (const auto& element : other) {
+            tmp.InsertAfter(it, element);
         }
         swap(tmp);
     }
@@ -161,13 +158,8 @@ public:
 
     // Обменивает содержимое списков за время O(1)
     void swap(SingleLinkedList& other) noexcept {
-        Node* temp = head_.next_node;
-        size_t t_size = size_;
-
-        head_.next_node = other.head_.next_node;
-        size_ = other.size_;
-        other.head_.next_node = temp;
-        other.size_ = t_size;
+        std::swap(head_.next_node, other.head_.next_node);
+        std::swap(size_, other.size_);
     }
 
     void PushFront(const Type& value) {
