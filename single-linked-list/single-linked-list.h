@@ -171,9 +171,7 @@ public:
 
     void PopFront() noexcept {
         assert(!IsEmpty());
-        Node* for_deletion = head_.next_node;
-        head_.next_node = head_.next_node->next_node;
-        delete for_deletion;
+        delete std::exchange(head_.next_node, head_.next_node->next_node);
         --size_;
     }
 
@@ -183,9 +181,7 @@ public:
      */
     Iterator EraseAfter(ConstIterator pos) noexcept {
         assert(pos.node_);
-        Node* for_deletion = pos.node_->next_node;
-        pos.node_->next_node = pos.node_->next_node->next_node;
-        delete for_deletion;
+        delete std::exchange(pos.node_->next_node, pos.node_->next_node->next_node);
         --size_;
         return Iterator(pos.node_->next_node);
     }
