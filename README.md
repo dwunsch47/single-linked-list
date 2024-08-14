@@ -1,6 +1,10 @@
 SingleLinkedList
+-----------------
 
 Singly linked version of std::list made for test and educational purposes.
+
+Features
+--------
 
 Supported fuctionality:
 
