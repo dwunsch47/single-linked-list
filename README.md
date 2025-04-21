@@ -5,6 +5,8 @@ Singly linked version of std::list made for test and educational purposes.
 
 Features
 --------
+Uses in-built Node struct for nodes with purpose-built iterators
+
 
 Supported fuctionality:
 
@@ -20,7 +22,7 @@ Supported fuctionality:
 - EraseAfter() for deleting node after another node
 - Clear() for deleting all nodes
 - GetSize() and IsEmpty() for checking size and emptiness of list
-- Functions for interacting with list through iterators
+- Iterator support
 - Private function Transfer() for transfering contents from one list to other
 
 Min. C++ version: C++17.
