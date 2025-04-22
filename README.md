@@ -10,8 +10,8 @@ Uses in-built `Node` struct for nodes with purpose-built iterators
 	- Based on `std::initializer_list`
 	- Accepting another `SingleLinkedList`
 - Destructor which deletes all nodes
-- `swap()` for swaping contents of two lists
-- `PushFront()` for adding new node in the begging
+- `swap()` for swapping contents of two lists
+- `PushFront()` for adding new node in the beginning
 - `PopFront()` for deleting first node
 - `InsertAfter()` for inserting new node after another node
 - `EraseAfter()` for deleting node after another node
@@ -21,5 +21,5 @@ Uses in-built `Node` struct for nodes with purpose-built iterators
 - Private function `Transfer()` for transfering contents from one list to other
 
 # Usage
- - Min. C++ version: C++17
+- Min. C++ version: C++17
 - Clone repository and use similarly to std::list. `main.cpp` containts examples of usage and tests
